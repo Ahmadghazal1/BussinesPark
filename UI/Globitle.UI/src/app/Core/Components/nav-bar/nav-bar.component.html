@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" [dir]="'dir' | translate">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../../../../assets/Images/logo-1.webp" width="250" height="70" alt="Bootstrap">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <ng-container *ngIf="user !==undefined && user.roles.includes('User') && !user.roles.includes('Admin')">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="['/complaint']">{{'Complaints' |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="['/suggestion']">{{'Suggestion' |
+                            translate}}</a>
+                    </li>
+
+
+                </ng-container>
+                <ng-container *ngIf="user !==undefined && user.roles.includes('Admin')">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="['/admin/home']">{{'Home' |
+                            translate}}</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="['/admin/company']">{{'Companies' |
+                            translate}}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" [routerLink]="['/admin/sector']">{{'Sectors' | translate}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" [routerLink]="['admin/suggestion']">{{'Suggestion' | translate}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            [routerLink]="['/admin/complaint']">{{'Complaints' | translate}}</a>
+                    </li>
+
+
+                </ng-container>
+
+
+            </ul>
+            <div class="d-flex" (change)="translate($event)">
+                <select class="form-select" aria-label="Default select example">
+                    <option></option>
+                    <option value="en">english</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+            <div class="d-flex">
+                <ng-container *ngIf="user === undefined;else showLogout">
+                    <!--Show Login Button-->
+                    <a [routerLink]="['/login']" class="btn btn-primary">{{'Login' |translate}}</a>
+
+                </ng-container>
+                <ng-template #showLogout>
+                    <div class="d-flex align-items-center">
+                        <ul class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{'Welcome' | translate}} {{user?.email}}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" (click)="onLogout()">{{'Logout' | translate}}</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</nav>

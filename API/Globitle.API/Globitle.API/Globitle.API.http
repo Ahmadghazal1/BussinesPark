@@ -1,0 +1,6 @@
+@Globitle.API_HostAddress = http://localhost:5167
+
+GET {{Globitle.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

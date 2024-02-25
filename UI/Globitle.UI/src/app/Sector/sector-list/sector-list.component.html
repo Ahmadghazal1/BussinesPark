@@ -1,0 +1,33 @@
+<div class="container" [dir]="'dir' | translate">
+    <h1 class="mt-3">{{'SectorList' | translate}}</h1>
+    <div class="d-flex justify-content-end mt-3 mb-4">
+        <a [routerLink]="['/admin/sector/add']" class="btn btn-primary">
+            {{"AddSector" | translate}}
+        </a>
+    </div>
+
+    <ng-container *ngIf="sectors$ | async as sectors">
+        <table datatable [dtOptions]="dtOptions" class="row-border hover ">
+            <thead>
+                <tr>
+
+                    <th>{{'SectorName' | translate}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sector of sectors">
+
+                    <td>{{sector.name}}</td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['/admin/sector',sector.sectorId]">Edit</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </ng-container>
+
+</div>

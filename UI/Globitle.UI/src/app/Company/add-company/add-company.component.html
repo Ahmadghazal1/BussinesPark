@@ -1,0 +1,50 @@
+<div class="container" [dir]="'dir' | translate">
+    <h1 class="mt-3">{{'AddCompany' | translate}}</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <div class="mt-2">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{'companyname' | translate}}</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{'MobileNumber' | translate}}</label>
+                <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
+                    [(ngModel)]="model.mobileNumber">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{'email' | translate}}</label>
+                <input type="text" class="form-control" id="email" name="email" [(ngModel)]="model.email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{'address' | translate}}</label>
+                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="model.address">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">{{'description' | translate}}</label>
+                <textarea class="form-control" id="description" rows="3" name="description"
+                    [(ngModel)]="model.description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="sectors" class="form-label">{{'Typeofcompany' | translate}}</label>
+                <ng-container *ngIf="sectors$ | async as sectors">
+                    <select class="form-control" name="sectors" id="sectors" [(ngModel)]="model.sectorId">
+                        <option *ngFor="let sector of sectors" [value]="sector.sectorId">{{sector.name}}</option>
+                    </select>
+                </ng-container>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{'Size' | translate}}</label>
+                <input type="number" class="form-control" id="size" name="size" [(ngModel)]="model.size">
+            </div>
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="!model.name || !model.address || !model.description || !model.mobileNumber || !model.size ">{{'Save'
+                    | translate}}</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

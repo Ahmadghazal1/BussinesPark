@@ -1,0 +1,72 @@
+<div class="container mt-5" [dir]="'dir' | translate">
+    <div class="row">
+        <div class="col-lg-6">
+            <canvas id="piechart"></canvas>
+        </div>
+        <div class="col-lg-6">
+            <canvas id="doughnut" height="10vh" width="20vw"></canvas>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <h2>{{'Data' | translate}}</h2>
+        <div class="col-lg-6">
+            <ng-container *ngIf="companies$ | async as companies">
+
+                <table id="datatableexample" class="table table-striped" id="table-data">
+                    <thead>
+                        <tr>
+
+                            <th>{{'companyname' | translate}}</th>
+                            <th>{{'address' | translate}}</th>
+                            <th>{{'MobileNumber' | translate}}</th>
+                            <th>{{'Size' | translate}}</th>
+                            <th>{{'Typeofcompany' | translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let company of companies">
+                            <td>{{company.name}}</td>
+                            <td>{{company.address}}</td>
+                            <td>{{company.mobileNumber}}</td>
+                            <td>{{company.size}}</td>
+                            <td>
+                                <span class="badge text-bg-secondary">{{company.sector.name}}</span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </ng-container>
+        </div>
+
+        <div class="col-lg-6">
+            <ng-container *ngIf="sectors$ | async as sectors">
+                <table id="datatableexample" class="table table-striped" id="table-data">
+                    <thead>
+                        <tr>
+                            <th>{{'SectorName' |translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sector of sectors">
+                            <td>{{sector.name}}</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </ng-container>
+
+        </div>
+
+
+    </div>
+
+</div>

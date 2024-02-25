@@ -1,0 +1,50 @@
+<div class="container" [dir]="'dir' | translate">
+    <h1 class="mt-3">{{'CompanyList' | translate}}</h1>
+    <div class="d-flex justify-content-end mt-3 mb-4">
+        <a [routerLink]="['/admin/company/add']" class="btn btn-primary">
+            {{'AddCompany' | translate}}
+        </a>
+        <a class="btn btn-success" (click)="exportexcel()"><i
+                class="bi bi-file-earmark-spreadsheet"></i>{{'ExportToExcel' | translate}}</a>
+    </div>
+
+    <ng-container *ngIf="companies$ | async as companies">
+
+        <table datatable id="datatableexample" class="row-border hover" id="table-data">
+            <thead>
+                <tr>
+
+                    <th>{{'companyname' | translate}}</th>
+                    <th>{{'address' | translate}}</th>
+                    <th>{{'MobileNumber' | translate}}</th>
+                    <th>{{'Size' | translate}}</th>
+                    <th>{{'Typeofcompany' | translate}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies">
+                    <td>{{company.name}}</td>
+                    <td>{{company.address}}</td>
+                    <td>{{company.mobileNumber}}</td>
+                    <td>{{company.size}}</td>
+                    <td>
+                        <span class="badge text-bg-secondary">{{company.sector.name}}</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['/admin/company',company.companyId]">{{'Edit' |
+                            translate}}</a>
+                        <a class="btn btn-light" *ngIf="company.createdAccount !== true"
+                            [routerLink]="['/admin/create-account',company.companyId]">{{'CreateAccount' |
+                            translate}}</a>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </ng-container>
+
+</div>

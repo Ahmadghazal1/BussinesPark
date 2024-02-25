@@ -1,0 +1,42 @@
+<div class="container" [dir]="'dir' | translate">
+    <h1 class="mt-3">{{'Complaints' | translate}}</h1>
+
+    <div *ngIf="complaints$ | async as complaint">
+        <ng-container *ngIf="complaints$ | async as complaints">
+            <table datatable [dtOptions]="dtOptions" class="row-border hover ">
+                <thead>
+                    <tr>
+                        <th>{{'companyname' | translate}}</th>
+                        <th>{{'address' | translate}}</th>
+                        <th>{{'titleOfComplaint' | translate}}</th>
+                        <th>{{'descriptionOfComplaint' | translate}}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let complaint of complaints">
+                        <td>{{complaint.company.name}}</td>
+                        <td>{{complaint.company.address}}</td>
+                        <td>{{complaint.title}}</td>
+                        <td>{{complaint.description}}</td>
+                        <td>
+                            <a href="mailto:{{complaint.company.email}}" class="btn btn-success">{{'SendEmail' |
+                                translate}}</a>
+
+                            <a (click)="Delete(this.complaint.companyComplaintId)" class="btn btn-danger"> <i
+                                    class="bi bi-trash3"></i> {{'Delete' | translate}}</a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </ng-container>
+    </div>
+
+
+
+</div>

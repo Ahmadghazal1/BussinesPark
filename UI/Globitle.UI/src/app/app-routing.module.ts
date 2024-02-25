@@ -17,10 +17,7 @@ import { CompanySuggestionComponent } from './Forms/company-suggestion/company-s
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
+
   {
     path: 'admin/home',
     component: AdminHomeComponent,
@@ -66,7 +63,7 @@ const routes: Routes = [
     component: SuggestionComponent
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {

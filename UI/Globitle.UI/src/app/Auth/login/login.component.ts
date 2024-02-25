@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           if (this.authService.getUser()?.roles.includes('Admin')) {
             this.router.navigateByUrl('/admin/home');
           } else {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/suggestion');
           }
 
         },

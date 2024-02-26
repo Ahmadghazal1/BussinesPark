@@ -13,7 +13,12 @@ export class SectorListComponent implements OnInit {
   sectors$?: Observable<Sector[]>;
   dtOptions: DataTables.Settings = {};
   constructor(private sectorService: SectorService) {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      processing: true,
+      dom: 'Bfrtip'
+      // Add other options...
+    };
   }
 
   ngOnInit(): void {

@@ -12,7 +12,12 @@ export class CompanySuggestionComponent {
   suggestions$?: Observable<Suggestion[]>;
   dtOptions: DataTables.Settings = {};
   constructor(private suggestionService: SuggestionService) {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      processing: true,
+      dom: 'Bfrtip'
+      // Add other options...
+    };
   }
 
   ngOnInit(): void {

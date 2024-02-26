@@ -3,6 +3,8 @@ using Globitle.API.Helper;
 using Globitle.API.Models;
 using Globitle.API.Models.Email;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -43,6 +45,7 @@ namespace Globitle.API.IRepositories.Repositories
                 Email = model.Email,
                CompanyId = model.CompanyId
             };
+            await userManager.SetTwoFactorEnabledAsync(user, true);
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
@@ -149,5 +152,6 @@ namespace Globitle.API.IRepositories.Repositories
 
             return jwtSecurityToken;
         }
+    
     }
 }

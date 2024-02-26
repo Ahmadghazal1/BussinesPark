@@ -1,7 +1,7 @@
-<div class="container" [dir]="'dir' | translate">
+<div class="container" [dir]="'dir' | translate" *ngIf="complaints$">
     <h1 class="mt-3">{{'Complaints' | translate}}</h1>
 
-    <div *ngIf="complaints$ | async as complaint; else notFound">
+    <div *ngIf="complaints$ | async as complaint">
         <ng-container *ngIf="complaints$ | async as complaints">
             <table datatable [dtOptions]="dtOptions" class="row-border hover ">
                 <thead>
@@ -38,9 +38,12 @@
     </div>
 
 
-    <ng-template #notFound>
-        <div class="alert alert-warning" role="alert">
-            {{'No complaints found' | translate}}
-        </div>
-    </ng-template>
+    <!-- <ng-template #notFound>
+
+    </ng-template> -->
+</div>
+<div class="container" *ngIf="!complaints$">
+    <div class="alert alert-warning" role="alert">
+        {{'No complaints found' | translate}}
+    </div>
 </div>

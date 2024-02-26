@@ -14,7 +14,12 @@ export class CompanyComplaintComponent {
   complaints$?: Observable<Complaint[]>;
   dtOptions: DataTables.Settings = {};
   constructor(private sharedService: SharedService, private alertService: AlertService) {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      processing: true,
+      dom: 'Bfrtip'
+      // Add other options...
+    };
   }
 
   ngOnInit(): void {

@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class NavBarComponent implements OnInit {
   user: User | undefined;
   myLang: string;
+  value: any;
   constructor(private authService: AuthService, private router: Router, private translateService: TranslateService) {
 
     if (localStorage.getItem("language") && localStorage.getItem("language") != 'null' && localStorage.getItem("language") != '') {
@@ -45,8 +46,10 @@ export class NavBarComponent implements OnInit {
   }
 
   translate(event: any) {
+
     localStorage.setItem('language', event.target.value);
     window.location.reload();
   }
+
 
 }

@@ -33,6 +33,8 @@ export class SuggestionComponent {
       this.suggestionService.addSuggestion(this.model).subscribe({
         next: (response) => {
           this.alertService.showAlertMessage('Success', 'Your suggestion sent successfully', 'success');
+          window.location.reload();
+
         },
         error: (error) => {
           this.alertService.showAlertMessage('Error', 'Unhandled exception', 'Error');

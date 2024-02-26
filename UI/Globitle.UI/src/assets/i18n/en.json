@@ -20,5 +20,6 @@
     "CompanyList": "Company list",
     "ExportToExcel": "Export to excel",
     "SuggestionForm": "Suggestion form",
-    "ComplaintForm": "Complaint form"
+    "ComplaintForm": "Complaint form",
+    "generateRandomPassword": "Generate random password"
 }

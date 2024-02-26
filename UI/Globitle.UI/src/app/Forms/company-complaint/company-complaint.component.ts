@@ -24,6 +24,8 @@ export class CompanyComplaintComponent {
     this.sharedService.deleteComplaint(id).subscribe({
       next: (response) => {
         this.alertService.showAlertMessage('Success', 'Deleted successfully', 'success');
+        window.location.reload();
+
 
       }, error: (error) => {
 

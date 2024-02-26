@@ -8,7 +8,7 @@
                 class="bi bi-file-earmark-spreadsheet"></i>{{'ExportToExcel' | translate}}</a>
     </div>
 
-    <ng-container *ngIf="companies$ | async as companies">
+    <ng-container *ngIf="companies$ | async as companies; else notFound">
 
         <table datatable id="datatableexample" class="row-border hover" id="table-data">
             <thead>
@@ -46,5 +46,9 @@
         </table>
 
     </ng-container>
-
+    <ng-template #notFound>
+        <div class="alert alert-warning" role="alert">
+            {{'No Companies right now' | translate}}
+        </div>
+    </ng-template>
 </div>

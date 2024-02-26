@@ -33,7 +33,8 @@ export class ComplaintComponent implements OnInit {
       this.sharedService.addComplaint(this.model).subscribe({
         next: (response) => {
           this.alertService.showAlertMessage('Success', 'Your complaint sent successfully', 'success');
-          
+          window.location.reload();
+
         },
         error: (error) => {
           this.alertService.showAlertMessage('Error', 'Unhandled exception', 'Error');

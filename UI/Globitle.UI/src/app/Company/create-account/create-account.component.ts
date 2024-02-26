@@ -18,6 +18,8 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
   paramsSubscription: Subscription | undefined;
   company: Company | undefined;
   request: RegisterRequest | undefined;
+  showPassword?: boolean;
+
   constructor(private route: ActivatedRoute, private authService: AuthService,
     private companySerivce: CompanyService, private alertService: AlertService, private router: Router) {
     this.request = {
@@ -69,6 +71,32 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
     }
 
 
+  }
+  generateRandomPassword(): void {
+    debugger
+    if (this.request)
+      this.request.password = this.generate();
+  }
+
+  myFunction(): void {
+    this.showPassword = !this.showPassword;
+
+  }
+
+  generate(): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%';
+    const minLength = 6;
+    const maxLength = 8;
+
+    const passwordLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+    let password = '';
+
+    for (let i = 0; i < passwordLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      password += characters.charAt(randomIndex);
+    }
+
+    return password;
   }
   ngOnDestroy(): void {
     this.paramsSubscription?.unsubscribe();

@@ -42,5 +42,11 @@
     "Username": "اسم المستخدم",
     "Edit Sector": "تعديل القطاع",
     "Sector Id": "رقم القطاع",
-    "Sector Not Found": "القطاع غير موجود"
+    "Sector Not Found": "القطاع غير موجود",
+    "generateRandomPassword": "انشاء كلمة مرور عشوائية",
+    "Show Password": "اظهار كلمة المرور",
+    "No Companies right now": "لا يوجد شركات في الوقت الحالي",
+    "No Sectores Found": "لا يوجد قطاعات في الوقت الحالي",
+    "No suggestion found": "لا يوجد اقتراحات في الوقت الحالي",
+    "No complaints found": "لا يوجد شكاوي في الوقت الحالي"
 }

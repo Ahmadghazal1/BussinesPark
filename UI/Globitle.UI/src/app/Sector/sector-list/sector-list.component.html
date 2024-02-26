@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    <ng-container *ngIf="sectors$ | async as sectors">
+    <ng-container *ngIf="sectors$ | async as sectors; else notFound">
         <table datatable [dtOptions]="dtOptions" class="row-border hover ">
             <thead>
                 <tr>
@@ -29,5 +29,11 @@
         </table>
 
     </ng-container>
+
+    <ng-template #notFound>
+        <div class="alert alert-warning" role="alert">
+            {{'No Sectores Found' | translate}}
+        </div>
+    </ng-template>
 
 </div>
